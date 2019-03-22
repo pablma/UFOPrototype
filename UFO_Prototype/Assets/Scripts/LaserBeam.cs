@@ -22,9 +22,7 @@ public class LaserBeam : MonoBehaviour
             obj.GetComponent<Rigidbody>().useGravity = false;
             obj.transform.parent = gameObject.transform;
 
-            Vector3 v = obj.transform.position;
 
-            
 
             obj.transform.Translate(new Vector3(0f, 3f * Time.deltaTime, 0f));
         }
