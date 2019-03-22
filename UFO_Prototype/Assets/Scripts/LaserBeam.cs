@@ -16,10 +16,21 @@ public class LaserBeam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKey(KeyCode.Space) && insideRatio)
         {
+            obj.GetComponent<Rigidbody>().useGravity = false;
             obj.transform.parent = gameObject.transform;
-            obj.transform.Translate(new Vector3(0f, 0.3f, 0f));
+
+            Vector3 v = obj.transform.position;
+
+            
+
+            obj.transform.Translate(new Vector3(0f, 3f * Time.deltaTime, 0f));
+        }
+        else if (obj != null)
+        {
+            obj.GetComponent<Rigidbody>().useGravity = true;
         }
     }
 
@@ -29,6 +40,8 @@ public class LaserBeam : MonoBehaviour
         {
             insideRatio = true;
             obj = other.gameObject.transform.parent.gameObject;
+            
+            Debug.Log(obj.name);
         }
             
     }
